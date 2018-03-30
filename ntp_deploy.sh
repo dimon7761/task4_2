@@ -18,5 +18,5 @@ cp /etc/ntp.conf `pwd`/ntp.conf.orig
 service ntp restart >> /dev/null 2>&1
 
 #ADD TO CRON
-echo "*/5 *	* * *   root    $(pwd)/ntp_verify.sh	# NTP Service" >> /etc/crontab
+echo "*/1 *	* * *   root    $(pwd)/ntp_verify.sh	# NTP Service" >> /etc/crontab
 
