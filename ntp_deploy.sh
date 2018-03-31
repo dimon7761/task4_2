@@ -10,7 +10,7 @@ sed -i '/ntp_verify.sh/d' /etc/crontab
 sed -i '/ua.pool.ntp.org/d' /etc/ntp.conf
 sed -i 's/^pool/#pool/g' /etc/ntp.conf
 sed -i 's/^server/#server/g' /etc/ntp.conf
-sed -i '/Specify one or more NTP servers/a \pool ua.pool.ntp.org iburst' /etc/ntp.conf
+sed -i '/pool 3./a \pool ua.pool.ntp.org iburst' /etc/ntp.conf
 if  [ -f /etc/ntp.conf.bak ]; then rm /etc/ntp.conf.bak; fi
 cp /etc/ntp.conf /etc/ntp.conf.bak
 
