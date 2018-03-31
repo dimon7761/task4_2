@@ -11,11 +11,11 @@ sed -i '/ua.pool.ntp.org/d' /etc/ntp.conf
 sed -i 's/^pool/#pool/g' /etc/ntp.conf
 sed -i 's/^server/#server/g' /etc/ntp.conf
 sed -i '/Specify one or more NTP servers/a \pool ua.pool.ntp.org iburst' /etc/ntp.conf
-rm `pwd`/ntp.conf.orig >> /dev/null 2>&1
-cp /etc/ntp.conf `pwd`/ntp.conf.orig
+if  [ -f /etc/ntp.conf.bak ]; then rm /etc/ntp.conf.bak; fi
+cp /etc/ntp.conf /etc/ntp.conf.bak
 
 #START NTP
-service ntp restart >> /dev/null 2>&1
+service ntp restart
 
 #ADD TO CRON
 echo "*/1 *	* * *   root    $(pwd)/ntp_verify.sh	# NTP Service" >> /etc/crontab
