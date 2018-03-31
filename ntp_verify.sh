@@ -6,8 +6,7 @@ if [ ! -n  "$(service ntp status | grep -w active)" ]; then `service ntp restart
 
 
 #CHECK FILE
-if [ ! -f  "/etc/ntp.conf" -a ! -f  "/etc/ntp.conf.bak" ]; then echo 'NOTICE: ups...restore ntp service'
-(apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall ntp) >> /dev/null 2>&1 && bash ./ntp_deploy.sh; exit $?; fi
+if [ ! -f  "/etc/ntp.conf" -a ! -f  "/etc/ntp.conf.bak" ]; then echo 'NOTICE: ups...'; exit 1; fi
 if [ ! -f  "/etc/ntp.conf.bak" ]; then cp /etc/ntp.conf /etc/ntp.conf.bak; echo 'NOTICE: bak file restore'; fi
 if [ ! -f  "/etc/ntp.conf" ]; then cp /etc/ntp.conf.bak /etc/ntp.conf; echo 'NOTICE: conf file restore'; fi
 
