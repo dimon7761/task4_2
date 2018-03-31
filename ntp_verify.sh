@@ -2,7 +2,7 @@
 #Dmitriy Litvin 2018
 
 #CHECK PROC
-if [ ! -n  "$(service ntp status | grep -w active)" ]; then `service ntp restart`; echo 'NOTICE: ntp is not running'; fi
+if [ ! -n  "$(ps aux | awk '{ print $1 }' | grep ntp)" ]; then `service ntp restart`; echo 'NOTICE: ntp is not running'; fi
 
 
 #CHECK FILE
